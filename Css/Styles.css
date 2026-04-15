@@ -1,9 +1,11 @@
 :root {
-    --primary: #2c3e50;
-    --accent: #3498db;
-    --light: #ecf0f1;
-    --dark: #2c3e50;
-    --text: #2c3e50;
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --text: #e0e0e0;
+    --accent: #00bfff;     /* اللون الرئيسي الجديد - أزرق سماوي أنيق */
+    --primary: #0077cc;
+    --header: #000000;
+    --border: #333;
 }
 
 * {
@@ -14,210 +16,177 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    background-color: var(--bg);
     color: var(--text);
-    background-color: #f8f9fa;
+    line-height: 1.6;
 }
 
-/* Header & Nav */
+/* Header */
 header {
-    background-color: var(--primary);
-    color: white;
-    padding: 1rem 0;
+    background-color: var(--header);
+    padding: 1.2rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid var(--accent);
 }
 
 nav {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
-    color: white;
+    color: var(--accent);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.8rem;
 }
 
 .nav-links a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
     font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 8px;
     transition: all 0.3s ease;
-    position: relative;
 }
 
-.nav-links a:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -3px;
-    left: 0;
+.nav-links a:hover,
+.nav-links a.active {
     background-color: var(--accent);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Responsive Nav */
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--primary);
-        padding: 1rem 2rem;
-        display: none;
-    }
-    .nav-links.active {
-        display: flex;
-    }
+    color: #000;
+    font-weight: 600;
 }
 
 /* Main Content */
 main {
     max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+/* Form & Cards */
+.form-container, .table-container {
+    background-color: var(--card);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
     margin: 2rem auto;
-    padding: 0 2rem;
 }
 
-/* Hero (Home) */
-.hero {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-    padding: 4rem 2rem;
-    border-radius: 15px;
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Table */
-.table-container {
-    overflow-x: auto;
-    margin: 2rem 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-th, td {
-    padding: 1rem 1.5rem;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-th {
-    background-color: var(--primary);
-    color: white;
-    font-weight: 600;
-}
-
-tr:hover {
-    background-color: #f1f8ff;
-    transition: all 0.3s ease;
-}
-
-/* Form */
 .form-container {
-    max-width: 700px;
-    margin: 2rem auto;
-    background: white;
-    padding: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 680px;
 }
 
 label {
     display: block;
-    margin: 1rem 0 0.5rem;
+    margin: 1.3rem 0 0.6rem;
     font-weight: 600;
+    color: var(--accent);
 }
 
-input, textarea, select {
+input, textarea {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    padding: 14px 16px;
+    background-color: #252525;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    color: white;
     font-size: 1rem;
-    transition: all 0.3s ease;
 }
 
 input:focus, textarea:focus {
     border-color: var(--accent);
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 4px rgba(0, 191, 255, 0.25);
 }
 
+/* Button */
 button {
     background-color: var(--accent);
-    color: white;
-    padding: 14px 30px;
+    color: #000;
+    padding: 15px 32px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
+    width: 100%;
     margin-top: 1.5rem;
     transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #2980b9;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(52, 152, 219, 0.3);
+    background-color: #00a2ff;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 191, 255, 0.4);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1.2rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background-color: #111;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #252525;
+}
+
+/* Home Page */
+.hero {
+    background: linear-gradient(135deg, #000000, #1a1a2e);
+    padding: 5rem 2rem;
+    border-radius: 18px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero h1 {
+    color: var(--accent);
+    font-size: 2.8rem;
 }
 
 /* Footer */
 footer {
-    background-color: var(--primary);
-    color: white;
+    background-color: var(--header);
+    color: #888;
     text-align: center;
-    padding: 2rem 0;
-    margin-top: 4rem;
+    padding: 2.5rem 0;
+    margin-top: 5rem;
+    border-top: 1px solid var(--accent);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    main { padding: 0 1rem; }
-    .hero h1 { font-size: 2.3rem; }
-  }
+    .nav-links { gap: 0.8rem; font-size: 0.95rem; }
+    .form-container { padding: 1.8rem 1.2rem; }
+    }
